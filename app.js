@@ -1,18 +1,23 @@
 'use strict'
 
-const cell = []; // пусто массив, который будет содержать в себе названия клеток
-const letters = ["A", "B", "C", "D", "E", "F", "G", "H"]; // Буквы для формарования клеток
-const number = [1, 2, 3, 4, 5, 6, 7, 8]; // номера клеток соотвественно 
-//заполняем массив клетками
+//Choose button and adding event
+const btn = document.querySelector(".fieldset__button");
+btn.addEventListener("click", horseSteps);
+
+
+const cell = []; // the empty array which will be contain the name of cell
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H"]; // letters for creating cell
+const number = [1, 2, 3, 4, 5, 6, 7, 8]; // numbersfor creating cell
+//fill the arry with cells
 for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
         cell.push(letters[i] + number[j]);
     }
 
 }
-// Массив шахматной доски
+// array of chess board
 const chess = [];
-//Заполняем шахматную доску, чтобы получился массив массивов --> 
+//Filling board for get array of arrays --> 
 //[ [A1..A8],
 // [B1...B8],
 // [C1...],...]
@@ -20,12 +25,12 @@ for (let i = 0; i < Math.ceil(cell.length / 8); i++) {
     chess[i] = cell.slice((i * 8), (i * 8) + 8);
 }
 
-const btn = document.querySelector(".fieldset__button");
-btn.addEventListener("click", horseSteps);
-//Логика шагов коня 
+
+
+//The logic of the horse's steps
 function horseSteps() {
-    let pos = document.querySelector("input").value.toUpperCase();
-    if (!deepSearch(chess, pos)) {
+    let pos = document.querySelector("input").value.toUpperCase(); //get input value
+    if (!deepSearch(chess, pos)) { // check if cell is exist
         alert("Возможно вы ввели неправильную позицию ячейки");
         return;
     } else {
@@ -33,9 +38,9 @@ function horseSteps() {
         let posibleSteps = " ";
         for (let x = 0; x < length; x++) {
             for (let y = 0; y < length; y++) {
-                //находит заданную позицию на шахматной доске
+                //find necessary cell
                 if (chess[x][y] == pos) {
-                    //Проверяем возможные ходы в различные направления
+                    //Check steps and adding in the variable
                     if (x - 1 >= 0 && y - 2 >= 0) {
                         posibleSteps += chess[x - 1][y - 2] + " ";
                     }
@@ -67,7 +72,7 @@ function horseSteps() {
         alert(`Возможные варианты хода:${posibleSteps}`);
     }
 }
-//Поиск в глубину для проверки присутсвтия введенной позиции
+// Deep search for check cell
 function deepSearch(array, item) {
     var len = array.length;
     for (var i = 0; i < len; i++) {
