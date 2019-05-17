@@ -31,7 +31,7 @@ for (let i = 0; i < Math.ceil(cell.length / 8); i++) {
 function horseSteps() {
     let pos = document.querySelector("input").value.toUpperCase(); //get input value
     if (!deepSearch(chess, pos)) { // check if cell is exist
-        alert("Возможно вы ввели неправильную позицию ячейки");
+        alert("Возможно вы ввели неправильную позицию ячейки или у вас стоит русская раскладка");
         return;
     } else {
         let length = 8;
