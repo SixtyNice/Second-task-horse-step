@@ -36,34 +36,36 @@ function horseSteps() {
     } else {
         let length = 8;
         let posibleSteps = " ";
-        for (let x = 0; x < length; x++) {
-            for (let y = 0; y < length; y++) {
+        //Переменная y  проходит по массивам массива chess 
+        //Переменная x проходит по элементам вложенных массивов
+        for (let y = 0; y < length; y++) {
+            for (let x = 0; x < length; x++) {
                 //find necessary cell
-                if (chess[x][y] == pos) {
+                if (chess[y][x] == pos) {
                     //Check steps and adding in the variable
-                    if (x - 1 >= 0 && y - 2 >= 0) {
-                        posibleSteps += chess[x - 1][y - 2] + " ";
+                    if (y - 1 >= 0 && x - 2 >= 0) {
+                        posibleSteps += chess[y - 1][x - 2] + " ";
                     }
-                    if (x + 1 < 8 && y - 2 >= 0) {
-                        posibleSteps += chess[x + 1][y - 2] + " ";
+                    if (y + 1 < 8 && x - 2 >= 0) {
+                        posibleSteps += chess[y + 1][x - 2] + " ";
                     }
-                    if (x + 2 < 8 && y - 1 >= 0) {
-                        posibleSteps += chess[x + 2][y - 1] + " ";
+                    if (y + 2 < 8 && x - 1 >= 0) {
+                        posibleSteps += chess[y + 2][x - 1] + " ";
                     }
-                    if (x + 2 < 8 && y + 1 < 8) {
-                        posibleSteps += chess[x + 2][y + 1] + " ";
+                    if (y + 2 < 8 && x + 1 < 8) {
+                        posibleSteps += chess[y + 2][x + 1] + " ";
                     }
-                    if (x + 1 < 8 && y + 2 < 8) {
-                        posibleSteps += chess[x + 1][y + 2] + " ";
+                    if (y + 1 < 8 && x + 2 < 8) {
+                        posibleSteps += chess[y + 1][x + 2] + " ";
                     }
-                    if (x - 1 >= 0 && y + 2 < 8) {
-                        posibleSteps += chess[x - 1][y + 2] + " ";
+                    if (y - 1 >= 0 && x + 2 < 8) {
+                        posibleSteps += chess[y - 1][x + 2] + " ";
                     }
-                    if (x - 2 >= 0 && y - 1 >= 0) {
-                        posibleSteps += chess[x - 2][y - 1] + " ";
+                    if (y - 2 >= 0 && x - 1 >= 0) {
+                        posibleSteps += chess[y - 2][x - 1] + " ";
                     }
-                    if (x - 2 >= 0 && y + 1 < 8) {
-                        posibleSteps += chess[x - 2][y + 1] + " ";
+                    if (y - 2 >= 0 && x + 1 < 8) {
+                        posibleSteps += chess[y - 2][x + 1] + " ";
                     }
                 }
             }
