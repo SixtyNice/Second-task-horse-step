@@ -76,8 +76,8 @@ function horseSteps() {
 }
 // Deep search for check cell
 function deepSearch(array, item) {
-    var len = array.length;
-    for (var i = 0; i < len; i++) {
+    let len = array.length;
+    for (let i = 0; i < len; i++) {
         if (array[i] instanceof Array) {
             if (deepSearch(array[i], item)) {
                 return true;
